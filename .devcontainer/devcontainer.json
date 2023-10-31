@@ -1,0 +1,35 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+{
+	"name": "Bun (Bullseye)",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	"workspaceMount": "src=${localWorkspaceFolder},dst=/workspace,type=bind,consistency=cached",
+	"workspaceFolder": "/workspace",
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	"forwardPorts": [
+		8080
+	],
+	"features": {
+		"common": {
+			"username": "automatic",
+			"uid": "automatic",
+			"gid": "automatic",
+			"installZsh": true,
+			"upgradePackages": true
+		}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"tinkertrain.theme-panda"
+			],
+			"settings": {
+				"workbench.colorTheme": "Panda Syntax" //replace Panda syntax
+			}
+		}
+	},
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "zsh .devcontainer/post-create.zsh",
+	"remoteUser": "root"
+}
